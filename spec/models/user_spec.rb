@@ -18,8 +18,11 @@ RSpec.describe User, type: :model do
   end
 
   context "同じaccountが存在している時" do
+    before do
+      User.create!(name: "mayu", account: "mayu", email: "mayu@aaa.jp")
+    end
+
     it "エラーになる" do
-      create(:user, account: "mayu")
       user = build(:user, account: "mayu")
       user.valid?
 
